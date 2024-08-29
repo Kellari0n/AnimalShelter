@@ -8,15 +8,21 @@ namespace AnimalShelter.Entities {
 
         [Required]
         [MaxLength(64)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
+
+        [Required]
+        [ForeignKey("AnimalType")]
+        public required int AnimalTypeId { get; set; }
+
+        public RefAnimalType AnimalType { get; set; } = null!;
 
         [Required]
         [MaxLength(64)]
-        public string Breed { get; set; }
+        public required string Breed { get; set; }
 
         [Url]
         [MaxLength(64)]
-        public string PhotoUrl { get; set; }
+        public required string PhotoUrl { get; set; }
 
         [Required]
         public required DateTime ArrivalDate { get; set; }
@@ -30,6 +36,6 @@ namespace AnimalShelter.Entities {
         public required int CageID { get; set; }
 
         [Required]
-        public Cage Cage { get; set; }
+        public Cage Cage { get; set; } = null!;
     }
 }
