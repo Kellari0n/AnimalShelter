@@ -1,3 +1,5 @@
+using AnimalShelter.Forms;
+
 namespace AnimalShelter {
     internal static class Program {
         /// <summary>

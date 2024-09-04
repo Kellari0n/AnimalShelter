@@ -6,5 +6,9 @@ namespace AnimalShelter.Entities {
         public int ID { get; set; }
         [Required]
         public required string Type { get; set; }
+
+        public override string ToString() {
+            return Type;
+        }
     }
 }

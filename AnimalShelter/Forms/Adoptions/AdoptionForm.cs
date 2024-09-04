@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AnimalShelter.Forms {
-    public partial class AnimalsListForm : Form {
-        public AnimalsListForm() {
+    public partial class AdoptionForm : Form {
+        public AdoptionForm() {
             InitializeComponent();
         }
     }

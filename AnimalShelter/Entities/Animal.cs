@@ -12,7 +12,7 @@ namespace AnimalShelter.Entities {
 
         [Required]
         [ForeignKey("AnimalType")]
-        public required int AnimalTypeId { get; set; }
+        public required int AnimalTypeID { get; set; }
 
         public RefAnimalType AnimalType { get; set; } = null!;
 
@@ -25,7 +25,7 @@ namespace AnimalShelter.Entities {
         public required string PhotoUrl { get; set; }
 
         [Required]
-        public required DateTime ArrivalDate { get; set; }
+        public DateTime ArrivalDate { get; set; } = DateTime.UtcNow;
 
         public DateTime? AdoptionDate { get; set; }
 

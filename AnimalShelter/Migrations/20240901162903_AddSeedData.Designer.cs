@@ -4,6 +4,7 @@ using AnimalShelter.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimalShelter.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240901162903_AddSeedData")]
+    partial class AddSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,36 +145,33 @@ namespace AnimalShelter.Migrations
                         new
                         {
                             ID = 1,
-                            AdoptionDate = new DateTime(2024, 9, 17, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6688),
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6685),
+                            ArrivalDate = new DateTime(2024, 9, 1, 16, 29, 3, 230, DateTimeKind.Utc).AddTicks(8706),
                             Breed = "Golden Retriever",
                             CageID = 1,
-                            IsAdopted = true,
+                            IsAdopted = false,
                             Name = "Buddy",
                             PhotoUrl = "buddy.jpg"
                         },
                         new
                         {
                             ID = 2,
-                            AdoptionDate = new DateTime(2024, 9, 17, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6697),
                             AnimalTypeID = 2,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6696),
+                            ArrivalDate = new DateTime(2024, 9, 1, 16, 29, 3, 230, DateTimeKind.Utc).AddTicks(8710),
                             Breed = "Siamese",
                             CageID = 2,
-                            IsAdopted = true,
+                            IsAdopted = false,
                             Name = "Whiskers",
                             PhotoUrl = "whiskers.jpg"
                         },
                         new
                         {
                             ID = 3,
-                            AdoptionDate = new DateTime(2024, 9, 17, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6700),
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6698),
+                            ArrivalDate = new DateTime(2024, 9, 1, 16, 29, 3, 230, DateTimeKind.Utc).AddTicks(8712),
                             Breed = "Labrador",
                             CageID = 3,
-                            IsAdopted = true,
+                            IsAdopted = false,
                             Name = "Max",
                             PhotoUrl = "max.jpg"
                         },
@@ -179,7 +179,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 4,
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6701),
+                            ArrivalDate = new DateTime(2024, 9, 1, 16, 29, 3, 230, DateTimeKind.Utc).AddTicks(8713),
                             Breed = "German Shepherd",
                             CageID = 3,
                             IsAdopted = false,
@@ -190,7 +190,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 5,
                             AnimalTypeID = 2,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6702),
+                            ArrivalDate = new DateTime(2024, 9, 1, 16, 29, 3, 230, DateTimeKind.Utc).AddTicks(8714),
                             Breed = "Maine Coon",
                             CageID = 4,
                             IsAdopted = false,
@@ -201,7 +201,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 6,
                             AnimalTypeID = 3,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6703),
+                            ArrivalDate = new DateTime(2024, 9, 1, 16, 29, 3, 230, DateTimeKind.Utc).AddTicks(8716),
                             Breed = "Canary",
                             CageID = 5,
                             IsAdopted = false,
@@ -212,7 +212,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 7,
                             AnimalTypeID = 3,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6705),
+                            ArrivalDate = new DateTime(2024, 9, 1, 16, 29, 3, 230, DateTimeKind.Utc).AddTicks(8717),
                             Breed = "Parrot",
                             CageID = 5,
                             IsAdopted = false,
@@ -223,7 +223,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 8,
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6706),
+                            ArrivalDate = new DateTime(2024, 9, 1, 16, 29, 3, 230, DateTimeKind.Utc).AddTicks(8719),
                             Breed = "Beagle",
                             CageID = 6,
                             IsAdopted = false,
@@ -234,7 +234,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 9,
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6708),
+                            ArrivalDate = new DateTime(2024, 9, 1, 16, 29, 3, 230, DateTimeKind.Utc).AddTicks(8720),
                             Breed = "Bulldog",
                             CageID = 6,
                             IsAdopted = false,
@@ -245,7 +245,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 10,
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6709),
+                            ArrivalDate = new DateTime(2024, 9, 1, 16, 29, 3, 230, DateTimeKind.Utc).AddTicks(8721),
                             Breed = "Poodle",
                             CageID = 6,
                             IsAdopted = false,
@@ -256,7 +256,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 11,
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6711),
+                            ArrivalDate = new DateTime(2024, 9, 1, 16, 29, 3, 230, DateTimeKind.Utc).AddTicks(8722),
                             Breed = "Husky",
                             CageID = 6,
                             IsAdopted = false,
@@ -282,9 +282,6 @@ namespace AnimalShelter.Migrations
                     b.Property<int>("MaxCapacity")
                         .HasColumnType("int");
 
-                    b.Property<int>("OccupiedCapacity")
-                        .HasColumnType("int");
-
                     b.Property<int>("ShelterID")
                         .HasColumnType("int");
 
@@ -305,7 +302,6 @@ namespace AnimalShelter.Migrations
                             AnimalTypeID = 1,
                             CageNumber = 101,
                             MaxCapacity = 1,
-                            OccupiedCapacity = 0,
                             ShelterID = 1
                         },
                         new
@@ -314,7 +310,6 @@ namespace AnimalShelter.Migrations
                             AnimalTypeID = 2,
                             CageNumber = 102,
                             MaxCapacity = 1,
-                            OccupiedCapacity = 0,
                             ShelterID = 1
                         },
                         new
@@ -323,7 +318,6 @@ namespace AnimalShelter.Migrations
                             AnimalTypeID = 1,
                             CageNumber = 201,
                             MaxCapacity = 2,
-                            OccupiedCapacity = 1,
                             ShelterID = 1
                         },
                         new
@@ -332,7 +326,6 @@ namespace AnimalShelter.Migrations
                             AnimalTypeID = 2,
                             CageNumber = 202,
                             MaxCapacity = 2,
-                            OccupiedCapacity = 1,
                             ShelterID = 1
                         },
                         new
@@ -341,7 +334,6 @@ namespace AnimalShelter.Migrations
                             AnimalTypeID = 3,
                             CageNumber = 301,
                             MaxCapacity = 3,
-                            OccupiedCapacity = 2,
                             ShelterID = 1
                         },
                         new
@@ -350,7 +342,6 @@ namespace AnimalShelter.Migrations
                             AnimalTypeID = 1,
                             CageNumber = 401,
                             MaxCapacity = 4,
-                            OccupiedCapacity = 4,
                             ShelterID = 1
                         },
                         new
@@ -359,7 +350,6 @@ namespace AnimalShelter.Migrations
                             AnimalTypeID = 4,
                             CageNumber = 501,
                             MaxCapacity = 5,
-                            OccupiedCapacity = 0,
                             ShelterID = 1
                         });
                 });

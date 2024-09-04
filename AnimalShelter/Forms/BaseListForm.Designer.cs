@@ -1,5 +1,5 @@
 ﻿namespace AnimalShelter.Forms {
-    partial class AnimalsListForm {
+    partial class BaseListForm<EntityT> {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -26,7 +26,14 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "AnimalsListForm";
+            this.Text = "BaseListForm";
+
+            _addButton.Click += AddButtonClick;
+            _deleteButton.Click += DeleteButtonClick;
+            _updateButton.Click += UpdateButtonClick;
+            _detailsButton.Click += DetailsButtonClick;
+            _refreshButton.Click += RefreshButtonClick;
+            _backButton.Click += BackButtonClick;
         }
 
         #endregion
