@@ -31,11 +31,9 @@
             _addButton = new Button();
             _deleteButton = new Button();
             _updateButton = new Button();
-            _searchLabel = new Label();
-            _searchBox = new ComboBox();
-            _detailsButton = new Button();
             _refreshButton = new Button();
             _backButton = new Button();
+            _detailsButton = new Button();
             ((System.ComponentModel.ISupportInitialize)_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -75,36 +73,6 @@
             _updateButton.Text = "Update";
             _updateButton.UseVisualStyleBackColor = true;
             // 
-            // _searchLabel
-            // 
-            _searchLabel.AutoSize = true;
-            _searchLabel.Location = new Point(142, 418);
-            _searchLabel.Name = "_searchLabel";
-            _searchLabel.Size = new Size(45, 15);
-            _searchLabel.TabIndex = 5;
-            _searchLabel.Text = "Search:";
-            _searchLabel.Visible = false;
-            // 
-            // _searchBox
-            // 
-            _searchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
-            _searchBox.AutoCompleteSource = AutoCompleteSource.ListItems;
-            _searchBox.FormattingEnabled = true;
-            _searchBox.Location = new Point(193, 416);
-            _searchBox.Name = "_searchBox";
-            _searchBox.Size = new Size(101, 23);
-            _searchBox.TabIndex = 7;
-            _searchBox.Visible = false;
-            // 
-            // _detailsButton
-            // 
-            _detailsButton.Location = new Point(613, 416);
-            _detailsButton.Name = "_detailsButton";
-            _detailsButton.Size = new Size(75, 23);
-            _detailsButton.TabIndex = 8;
-            _detailsButton.Text = "Details";
-            _detailsButton.UseVisualStyleBackColor = true;
-            // 
             // _refreshButton
             // 
             _refreshButton.Location = new Point(713, 416);
@@ -123,16 +91,25 @@
             _backButton.Text = "Back";
             _backButton.UseVisualStyleBackColor = true;
             // 
+            // _detailsButton
+            // 
+            _detailsButton.Location = new Point(613, 416);
+            _detailsButton.Name = "_detailsButton";
+            _detailsButton.Size = new Size(75, 23);
+            _detailsButton.TabIndex = 8;
+            _detailsButton.Text = "Details";
+            _detailsButton.UseVisualStyleBackColor = true;
+            
+            // 
             // TableDesign
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            
             Controls.Add(_backButton);
             Controls.Add(_refreshButton);
             Controls.Add(_detailsButton);
-            Controls.Add(_searchBox);
-            Controls.Add(_searchLabel);
             Controls.Add(_updateButton);
             Controls.Add(_deleteButton);
             Controls.Add(_addButton);
@@ -142,7 +119,6 @@
             Text = "List";
             ((System.ComponentModel.ISupportInitialize)_dataGridView).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -151,10 +127,8 @@
         protected Button _addButton;
         protected Button _deleteButton;
         protected Button _updateButton;
-        protected ComboBox _searchBox;
-        protected Label _searchLabel;
-        protected Button _detailsButton;
         protected Button _refreshButton;
         protected Button _backButton;
+        protected Button _detailsButton;
     }
 }

@@ -50,7 +50,7 @@ namespace AnimalShelter.Forms {
 
             List<int> ids = GetSelectedIds();
             if (ids.Count == 0) {
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Select the entity to update", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (ids.Count == 1) {
                 var form = new AnimalForm(ActionType.Update, ids.First());
@@ -62,7 +62,7 @@ namespace AnimalShelter.Forms {
                 form.ShowDialog();
             }
             else {
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select single entity", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -71,7 +71,7 @@ namespace AnimalShelter.Forms {
 
             List<int> ids = GetSelectedIds();
             if (ids.Count == 0) {
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Select the entity to update", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (ids.Count == 1) {
                 var form = new AnimalForm(ActionType.Read, ids.First());
@@ -83,8 +83,12 @@ namespace AnimalShelter.Forms {
                 form.ShowDialog();
             }
             else {
-                MessageBox.Show("", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select single entity", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void AdoptionButtonClick(object sender, EventArgs e) {
+
         }
 
         protected override void RefreshTable() {
@@ -95,6 +99,9 @@ namespace AnimalShelter.Forms {
                     .Include(a => a.AnimalType)
                     .ToArray();
             }
+            _dataGridView.Columns["AnimalTypeID"].Visible = false;
+            _dataGridView.Columns["CageID"].Visible = false;
+            _dataGridView.Columns["PhotoUrl"].Visible = false;
         }
     }
 }

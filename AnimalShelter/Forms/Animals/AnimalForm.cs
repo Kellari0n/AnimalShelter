@@ -1,6 +1,5 @@
 ﻿using AnimalShelter.Context;
 using AnimalShelter.Entities;
-using AnimalShelter.Forms.Animals;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -32,9 +31,9 @@ namespace AnimalShelter.Forms {
                     break;
                 case ActionType.Read:
                     _nameBox.ReadOnly = true;
-                    _typeBox.AllowDrop = false;
+                    _typeBox.Enabled = false;
                     _breedBox.ReadOnly = true;
-                    _cageBox.AllowDrop = false;
+                    _cageBox.Enabled = false;
                     _arrivalDateBox.ReadOnly = true;
                     _adoptionDateBox.ReadOnly = true;
                     _actionButton.Enabled = false;
@@ -57,11 +56,6 @@ namespace AnimalShelter.Forms {
         }
         private void FillBoxes(int entityID, bool isReadOnly = false) {
             using (var context = new AppDbContext()) {
-                if (!isReadOnly) {
-                    _typeBox.Items.AddRange(context.RefAnimalType.ToArray());
-                    _cageBox.Items.AddRange(context.Cages.ToArray());
-                }
-
                 if (entityID != 0) {
                     var entity = context.Animals
                         .Include(a => a.AnimalType)
@@ -77,7 +71,7 @@ namespace AnimalShelter.Forms {
                         _cageBox.Text = entity.Cage.CageNumber.ToString();
                         _arrivalDateBox.Text = entity.ArrivalDate.ToString();
                         if (entity.AdoptionDate == null) {
-                            
+
                         }
                         else {
                             _adoptionDateBox.Text = entity.AdoptionDate.Value.ToString();
@@ -93,6 +87,19 @@ namespace AnimalShelter.Forms {
                     }
                     else {
                         MessageBox.Show("The entity could not be found.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (!isReadOnly) {
+                        _typeBox.Items.AddRange(context.RefAnimalType.ToArray());
+                        _cageBox.Items.AddRange(context.Cages.ToArray());
+                    }
+                    else {
+                        _typeBox.Items.Add(context.RefAnimalType.First(at => at.ID == entity.AnimalTypeID));
+                        _typeBox.SelectedIndex = 0;
+
+                        _cageBox.Items.Add(context.Cages.First(c => c.ID == entity.CageID));
+                        _cageBox.SelectedIndex = 0;
                     }
                 }
                 else {
@@ -123,12 +130,12 @@ namespace AnimalShelter.Forms {
 
             string breed = _breedBox.Text;
 
-            if (!DateTime.TryParse(_arrivalDateBox.Text, out DateTime arrivalDate)){
+            if (!DateTime.TryParse(_arrivalDateBox.Text, out DateTime arrivalDate)) {
                 return false;
             }
 
             if (!DateTime.TryParse(_adoptionDateBox.Text, out DateTime adoptionDate)) {
-                
+
             }
 
             Cage? cage = _cageBox.SelectedItem as Cage;
@@ -138,15 +145,15 @@ namespace AnimalShelter.Forms {
             if (animalType is null) { return false; }
 
             entity = new Animal {
-                Name = name, 
+                Name = name,
                 AnimalType = animalType,
-                AnimalTypeID = animalType.ID, 
-                Breed = breed, 
+                AnimalTypeID = animalType.ID,
+                Breed = breed,
                 Cage = cage,
-                CageID = cage.ID, 
-                ArrivalDate = arrivalDate, 
-                AdoptionDate = adoptionDate, 
-                PhotoUrl = "Photos\\animal" + _entityId 
+                CageID = cage.ID,
+                ArrivalDate = arrivalDate,
+                AdoptionDate = adoptionDate,
+                PhotoUrl = "Photos\\animal" + _entityId
             };
 
             if (_photoUrl.IsNullOrEmpty()) {
@@ -197,7 +204,7 @@ namespace AnimalShelter.Forms {
                 }
 
                 using (var context = new AppDbContext()) {
-                    var oldEntity = context.Animals.Include(a=>a.Cage).Include(a=>a.Cage.Animals).FirstOrDefault(a => a.ID == _entityId);
+                    var oldEntity = context.Animals.Include(a => a.Cage).Include(a => a.Cage.Animals).FirstOrDefault(a => a.ID == _entityId);
                     if (oldEntity is not null) {
                         oldEntity.Name = entity!.Name;
                         oldEntity.AnimalTypeID = entity.AnimalTypeID;
@@ -218,6 +225,9 @@ namespace AnimalShelter.Forms {
             else {
                 MessageBox.Show("Please ensure that all fields are filled out correctly.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        private void Back(object sender, EventArgs e) {
+            Close();
         }
     }
 }

@@ -25,6 +25,21 @@ namespace AnimalShelter.Forms {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+
+            _adoptionButton = new Button();
+            // 
+            // _adoptionButton
+            // 
+            _adoptionButton.Location = new Point(213, 416);
+            _adoptionButton.Name = "_adoptionButton";
+            _adoptionButton.Size = new Size(75, 23);
+            _adoptionButton.TabIndex = 11;
+            _adoptionButton.Text = "Adopt";
+            _adoptionButton.UseVisualStyleBackColor = true;
+            _adoptionButton.Click += AdoptionButtonClick;
+
+            Controls.Add(_adoptionButton);
+
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
@@ -32,5 +47,7 @@ namespace AnimalShelter.Forms {
         }
 
         #endregion
+
+        private Button _adoptionButton;
     }
 }

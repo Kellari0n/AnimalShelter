@@ -8,7 +8,7 @@ namespace AnimalShelter.Entities {
         public required string Type { get; set; }
 
         public override string ToString() {
-            return Type;
+            return Type.ToString();
         }
     }
 }

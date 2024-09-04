@@ -16,5 +16,9 @@ namespace AnimalShelter.Entities {
         public List<Cage> Cages { get; set; } = [];
 
         public List<Animal> Animals { get; set; } = [];
+
+        public override string ToString() {
+            return Name.ToString();
+        }
     }
 }

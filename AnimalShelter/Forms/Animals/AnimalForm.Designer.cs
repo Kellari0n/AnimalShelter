@@ -38,7 +38,7 @@
             _adoptionDateLabel = new Label();
             _adoptionDateBox = new TextBox();
             _actionButton = new Button();
-            _addTypeButton = new Button();
+            _backButton = new Button();
             ((System.ComponentModel.ISupportInitialize)_imageBox).BeginInit();
             SuspendLayout();
             // 
@@ -96,7 +96,7 @@
             _typeBox.DropDownStyle = ComboBoxStyle.DropDownList;
             _typeBox.Location = new Point(380, 60);
             _typeBox.Name = "_typeBox";
-            _typeBox.Size = new Size(106, 23);
+            _typeBox.Size = new Size(130, 23);
             _typeBox.TabIndex = 5;
             // 
             // _breedLabel
@@ -173,28 +173,30 @@
             // _actionButton
             // 
             _actionButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            _actionButton.Location = new Point(220, 275);
+            _actionButton.Location = new Point(386, 279);
             _actionButton.Name = "_actionButton";
             _actionButton.Size = new Size(100, 30);
             _actionButton.TabIndex = 16;
             _actionButton.Text = "Action";
             _actionButton.UseVisualStyleBackColor = true;
             // 
-            // _addTypeButton
+            // _backButton
             // 
-            _addTypeButton.Location = new Point(487, 60);
-            _addTypeButton.Name = "_addTypeButton";
-            _addTypeButton.Size = new Size(23, 23);
-            _addTypeButton.TabIndex = 17;
-            _addTypeButton.Text = "+";
-            _addTypeButton.UseVisualStyleBackColor = true;
+            _backButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            _backButton.Location = new Point(42, 279);
+            _backButton.Name = "_backButton";
+            _backButton.Size = new Size(100, 30);
+            _backButton.TabIndex = 18;
+            _backButton.Text = "Back";
+            _backButton.UseVisualStyleBackColor = true;
+            _backButton.Click += Back;
             // 
             // AnimalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(524, 321);
-            Controls.Add(_addTypeButton);
+            Controls.Add(_backButton);
             Controls.Add(_actionButton);
             Controls.Add(_adoptionDateLabel);
             Controls.Add(_adoptionDateBox);
@@ -234,6 +236,6 @@
         private Label _adoptionDateLabel;
         private TextBox _adoptionDateBox;
         private Button _actionButton;
-        private Button _addTypeButton;
+        private Button _backButton;
     }
 }
