@@ -37,5 +37,9 @@ namespace AnimalShelter.Entities {
 
         [Required]
         public Cage Cage { get; set; } = null!;
+
+        public override string ToString() {
+            return Name;
+        }
     }
 }
