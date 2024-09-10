@@ -25,7 +25,7 @@ namespace AnimalShelter {
         }
 
         public void ReportsButtonClick(object sender, EventArgs e) {
-            var form = new IncomeReportsListForm();
+            var form = new IncomeReportForm();
             form.FormClosed += (sender, e) => {
                 Visible = true;
             };

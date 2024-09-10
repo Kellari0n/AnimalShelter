@@ -22,7 +22,7 @@ namespace AnimalShelter.Forms {
         }
 
         protected override void UpdateButtonClick(object sender, EventArgs e) {
-            List<int> ids = GetSelectedIds();
+            List<int> ids = GetSelectedEntitiesIds();
             if (ids.Count == 0) {
                 MessageBox.Show("Select the entity to update", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -41,7 +41,7 @@ namespace AnimalShelter.Forms {
         }
 
         protected override void DetailsButtonClick(object sender, EventArgs e) {
-            List<int> ids = GetSelectedIds();
+            List<int> ids = GetSelectedEntitiesIds();
             if (ids.Count == 0) {
                 MessageBox.Show("Select the entity to update", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

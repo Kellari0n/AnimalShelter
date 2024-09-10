@@ -13,7 +13,7 @@ namespace AnimalShelter.Forms {
 
         }
         protected virtual void DeleteButtonClick(object sender, EventArgs e) {
-            List<int> selectedId = GetSelectedIds();
+            List<int> selectedId = GetSelectedEntitiesIds();
 
             if (selectedId.Count == 0) { 
                 MessageBox.Show("Select the entity you want to delete.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -54,7 +54,7 @@ namespace AnimalShelter.Forms {
             }
         }
 
-        protected List<int> GetSelectedIds() {
+        protected List<int> GetSelectedRowsIds() {
             List<int> selectedRows = new();
             for (int i = 0; i < _dataGridView.SelectedCells.Count; i++) {
                 if (!selectedRows.Contains(_dataGridView.SelectedCells[i].RowIndex)) {
@@ -62,8 +62,12 @@ namespace AnimalShelter.Forms {
                 }
             }
 
+            return selectedRows;
+        }
+
+        protected List<int> GetSelectedEntitiesIds() {
             List<int> selectedIds = new();
-            foreach (int i in selectedRows) {
+            foreach (int i in GetSelectedRowsIds()) {
                 selectedIds.Add((int)_dataGridView.Rows[i].Cells[0].Value);
             }
 
