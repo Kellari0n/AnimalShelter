@@ -36,6 +36,7 @@ namespace AnimalShelter.Forms {
             _adoptionButton.TabIndex = 11;
             _adoptionButton.Text = "Adopt";
             _adoptionButton.UseVisualStyleBackColor = true;
+            _adoptionButton.Visible = false;
             _adoptionButton.Click += AdoptionButtonClick;
 
             Controls.Add(_adoptionButton);

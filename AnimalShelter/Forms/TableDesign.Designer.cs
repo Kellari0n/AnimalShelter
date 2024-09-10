@@ -99,14 +99,12 @@
             _detailsButton.TabIndex = 8;
             _detailsButton.Text = "Details";
             _detailsButton.UseVisualStyleBackColor = true;
-            
             // 
             // TableDesign
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            
+            ClientSize = new Size(804, 461);
             Controls.Add(_backButton);
             Controls.Add(_refreshButton);
             Controls.Add(_detailsButton);
@@ -115,6 +113,8 @@
             Controls.Add(_addButton);
             Controls.Add(_dataGridView);
             MaximizeBox = false;
+            MaximumSize = new Size(820, 500);
+            MinimumSize = new Size(820, 500);
             Name = "TableDesign";
             Text = "List";
             ((System.ComponentModel.ISupportInitialize)_dataGridView).EndInit();
