@@ -8,26 +8,44 @@ namespace AnimalShelter.Forms {
         public IncomeReportForm() {
             InitializeComponent();
 
-            _timePeriodBox.Items.AddRange(["Year", "Month"]);
+            var _months = new[] {
+                "All Year",
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            };
+
+            _monthBox.Items.AddRange(_months);
+            _monthBox.SelectedIndex = 0;
+            _yearBox.Text = DateTime.Now.Year.ToString();
         }
 
         private void GenerateButtonClick(object sender, EventArgs e) {
-            using (var context = new AppDbContext()) { 
-                List<Adoption> adoptions = new List<Adoption>();
-                if (_timePeriodBox.SelectedIndex == 0) {
-                    if (!int.TryParse(_timeBox.Text, out int year)) {
-                        MessageBox.Show("Please ensure that all fields are filled out correctly.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    adoptions = context.Adoptions.Include(a => a.Animal).Where(a => a.AdoptionDate.Year == year).ToList();
+            using (var context = new AppDbContext()) {
+                if (!int.TryParse(_yearBox.Text, out int year)) {
+                    MessageBox.Show("Please ensure that all fields are filled out correctly.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-                else if (_timePeriodBox.SelectedIndex == 0) {
-                    if (!int.TryParse(_timeBox.Text, out int month)) {
-                        MessageBox.Show("Please ensure that all fields are filled out correctly.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    adoptions = context.Adoptions.Include(a => a.Animal).Where(a => a.AdoptionDate.Month == month).ToList();
+
+                var adoptionsQuery = context.Adoptions
+                    .Include(a => a.Animal)
+                    .Where(a => a.AdoptionDate.Year == year);
+
+                if (_monthBox.SelectedIndex != 0) {
+                    adoptionsQuery = adoptionsQuery
+                        .Where(a => a.AdoptionDate.Month == _monthBox.SelectedIndex);
                 }
+
+                var adoptions = adoptionsQuery.ToList();
 
                 adoptions.Add(new Adoption { AdoptionFee = adoptions.Sum(a => a.AdoptionFee) });
                 _dataGridView.DataSource = adoptions;
@@ -35,15 +53,8 @@ namespace AnimalShelter.Forms {
             }
         }
 
-        private void TimePeriodBoxSelectedIndexChanged(object sender, EventArgs e) {
-            if (_timePeriodBox.SelectedIndex == 0) {
-                _timeLabel.Text = "Year:";
-                _timeBox.Text = DateTime.Now.Year.ToString();
-            }
-            else if (_timePeriodBox.SelectedIndex == 1) {
-                _timeLabel.Text = "Month:";
-                _timeBox.Text = DateTime.Now.Month.ToString();
-            }
+        private void BackButtonClick(object sender, EventArgs e) {
+            Close();
         }
     }
 }

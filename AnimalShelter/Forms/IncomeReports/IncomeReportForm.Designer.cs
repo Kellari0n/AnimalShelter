@@ -27,10 +27,11 @@ namespace AnimalShelter.Forms {
         private void InitializeComponent() {
             _dataGridView = new DataGridView();
             _backButton = new Button();
-            _timePeriodBox = new ComboBox();
             _generateButton = new Button();
-            _timeBox = new TextBox();
-            _timeLabel = new Label();
+            _yearBox = new TextBox();
+            _yearLabel = new Label();
+            _monthLabel = new Label();
+            _monthBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -51,18 +52,7 @@ namespace AnimalShelter.Forms {
             _backButton.TabIndex = 10;
             _backButton.Text = "Back";
             _backButton.UseVisualStyleBackColor = true;
-            // 
-            // _timePeriodBox
-            // 
-            _timePeriodBox.AutoCompleteMode = AutoCompleteMode.Suggest;
-            _timePeriodBox.AutoCompleteSource = AutoCompleteSource.ListItems;
-            _timePeriodBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            _timePeriodBox.FormattingEnabled = true;
-            _timePeriodBox.Location = new Point(390, 416);
-            _timePeriodBox.Name = "_timePeriodBox";
-            _timePeriodBox.Size = new Size(121, 23);
-            _timePeriodBox.TabIndex = 11;
-            _timePeriodBox.SelectedIndexChanged += TimePeriodBoxSelectedIndexChanged;
+            _backButton.Click += BackButtonClick;
             // 
             // _generateButton
             // 
@@ -74,31 +64,49 @@ namespace AnimalShelter.Forms {
             _generateButton.UseVisualStyleBackColor = true;
             _generateButton.Click += GenerateButtonClick;
             // 
-            // _timeBox
+            // _yearBox
             // 
-            _timeBox.Location = new Point(592, 416);
-            _timeBox.Name = "_timeBox";
-            _timeBox.Size = new Size(100, 23);
-            _timeBox.TabIndex = 13;
+            _yearBox.Location = new Point(444, 417);
+            _yearBox.Name = "_yearBox";
+            _yearBox.Size = new Size(100, 23);
+            _yearBox.TabIndex = 13;
             // 
-            // _timeLabel
+            // _yearLabel
             // 
-            _timeLabel.Location = new Point(532, 416);
-            _timeLabel.Name = "_timeLabel";
-            _timeLabel.Size = new Size(54, 23);
-            _timeLabel.TabIndex = 14;
-            _timeLabel.Text = "Year:";
-            _timeLabel.TextAlign = ContentAlignment.MiddleRight;
+            _yearLabel.Location = new Point(384, 417);
+            _yearLabel.Name = "_yearLabel";
+            _yearLabel.Size = new Size(54, 23);
+            _yearLabel.TabIndex = 14;
+            _yearLabel.Text = "Year:";
+            _yearLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // _monthLabel
+            // 
+            _monthLabel.Location = new Point(547, 417);
+            _monthLabel.Name = "_monthLabel";
+            _monthLabel.Size = new Size(54, 23);
+            _monthLabel.TabIndex = 16;
+            _monthLabel.Text = "Month:";
+            _monthLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // _monthBox
+            // 
+            _monthBox.FormattingEnabled = true;
+            _monthBox.Location = new Point(607, 416);
+            _monthBox.Name = "_monthBox";
+            _monthBox.Size = new Size(100, 23);
+            _monthBox.TabIndex = 17;
             // 
             // IncomeReportForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(804, 461);
-            Controls.Add(_timeLabel);
-            Controls.Add(_timeBox);
+            Controls.Add(_monthBox);
+            Controls.Add(_monthLabel);
+            Controls.Add(_yearLabel);
+            Controls.Add(_yearBox);
             Controls.Add(_generateButton);
-            Controls.Add(_timePeriodBox);
             Controls.Add(_backButton);
             Controls.Add(_dataGridView);
             MaximizeBox = false;
@@ -115,9 +123,10 @@ namespace AnimalShelter.Forms {
 
         protected DataGridView _dataGridView;
         protected Button _backButton;
-        private ComboBox _timePeriodBox;
         protected Button _generateButton;
-        private TextBox _timeBox;
-        private Label _timeLabel;
+        private TextBox _yearBox;
+        private Label _yearLabel;
+        private Label _monthLabel;
+        private ComboBox _monthBox;
     }
 }
