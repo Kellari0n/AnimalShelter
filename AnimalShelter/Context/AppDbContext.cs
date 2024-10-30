@@ -1,5 +1,6 @@
 ﻿using AnimalShelter.Entities;
 
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 using System.Configuration;
@@ -14,13 +15,17 @@ namespace AnimalShelter.Context {
         public DbSet<RefAnimalType> RefAnimalType { get; set; }
 
         public AppDbContext() : base() {
-
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            base.OnConfiguring(optionsBuilder);
+            var connectionString = new SqliteConnectionStringBuilder() {
+                Mode = SqliteOpenMode.ReadWriteCreate,
+                ConnectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString
+            }.ConnectionString;
 
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
+            optionsBuilder.UseSqlite(connectionString)
+                .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Name });
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {

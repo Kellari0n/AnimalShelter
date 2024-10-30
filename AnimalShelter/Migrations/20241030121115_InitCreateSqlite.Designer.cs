@@ -12,45 +12,42 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimalShelter.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240903140330_FixCapacity")]
-    partial class FixCapacity
+    [Migration("20241030121115_InitCreateSqlite")]
+    partial class InitCreateSqlite
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
 
             modelBuilder.Entity("AnimalShelter.Entities.Adoption", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("INTEGER")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1L)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AdopterContact")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("AdopterName")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("AdoptionDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("AdoptionFee")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("AnimalID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
@@ -92,42 +89,43 @@ namespace AnimalShelter.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("INTEGER")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1L)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime?>("AdoptionDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("AnimalTypeID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("ArrivalDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Breed")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("CageID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsAdopted")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PhotoUrl")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("ShelterID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
@@ -145,9 +143,9 @@ namespace AnimalShelter.Migrations
                         new
                         {
                             ID = 1,
-                            AdoptionDate = new DateTime(2024, 9, 17, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6688),
+                            AdoptionDate = new DateTime(2024, 11, 13, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1672),
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6685),
+                            ArrivalDate = new DateTime(2024, 10, 30, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1668),
                             Breed = "Golden Retriever",
                             CageID = 1,
                             IsAdopted = true,
@@ -157,9 +155,9 @@ namespace AnimalShelter.Migrations
                         new
                         {
                             ID = 2,
-                            AdoptionDate = new DateTime(2024, 9, 17, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6697),
+                            AdoptionDate = new DateTime(2024, 11, 13, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1680),
                             AnimalTypeID = 2,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6696),
+                            ArrivalDate = new DateTime(2024, 10, 30, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1679),
                             Breed = "Siamese",
                             CageID = 2,
                             IsAdopted = true,
@@ -169,9 +167,9 @@ namespace AnimalShelter.Migrations
                         new
                         {
                             ID = 3,
-                            AdoptionDate = new DateTime(2024, 9, 17, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6700),
+                            AdoptionDate = new DateTime(2024, 11, 13, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1683),
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6698),
+                            ArrivalDate = new DateTime(2024, 10, 30, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1681),
                             Breed = "Labrador",
                             CageID = 3,
                             IsAdopted = true,
@@ -182,7 +180,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 4,
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6701),
+                            ArrivalDate = new DateTime(2024, 10, 30, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1684),
                             Breed = "German Shepherd",
                             CageID = 3,
                             IsAdopted = false,
@@ -193,7 +191,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 5,
                             AnimalTypeID = 2,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6702),
+                            ArrivalDate = new DateTime(2024, 10, 30, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1685),
                             Breed = "Maine Coon",
                             CageID = 4,
                             IsAdopted = false,
@@ -204,7 +202,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 6,
                             AnimalTypeID = 3,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6703),
+                            ArrivalDate = new DateTime(2024, 10, 30, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1687),
                             Breed = "Canary",
                             CageID = 5,
                             IsAdopted = false,
@@ -215,7 +213,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 7,
                             AnimalTypeID = 3,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6705),
+                            ArrivalDate = new DateTime(2024, 10, 30, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1688),
                             Breed = "Parrot",
                             CageID = 5,
                             IsAdopted = false,
@@ -226,7 +224,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 8,
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6706),
+                            ArrivalDate = new DateTime(2024, 10, 30, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1690),
                             Breed = "Beagle",
                             CageID = 6,
                             IsAdopted = false,
@@ -237,7 +235,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 9,
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6708),
+                            ArrivalDate = new DateTime(2024, 10, 30, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1691),
                             Breed = "Bulldog",
                             CageID = 6,
                             IsAdopted = false,
@@ -248,7 +246,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 10,
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6709),
+                            ArrivalDate = new DateTime(2024, 10, 30, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1692),
                             Breed = "Poodle",
                             CageID = 6,
                             IsAdopted = false,
@@ -259,7 +257,7 @@ namespace AnimalShelter.Migrations
                         {
                             ID = 11,
                             AnimalTypeID = 1,
-                            ArrivalDate = new DateTime(2024, 9, 3, 14, 3, 29, 466, DateTimeKind.Utc).AddTicks(6711),
+                            ArrivalDate = new DateTime(2024, 10, 30, 12, 11, 15, 3, DateTimeKind.Utc).AddTicks(1694),
                             Breed = "Husky",
                             CageID = 6,
                             IsAdopted = false,
@@ -272,24 +270,25 @@ namespace AnimalShelter.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("INTEGER")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1L)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AnimalTypeID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("CageNumber")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("MaxCapacity")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("OccupiedCapacity")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ShelterID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
@@ -371,21 +370,22 @@ namespace AnimalShelter.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("INTEGER")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1L)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Month")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ShelterID")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("TotalIncome")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Year")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
@@ -398,13 +398,14 @@ namespace AnimalShelter.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("INTEGER")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1L)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ID");
 
@@ -457,19 +458,20 @@ namespace AnimalShelter.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                        .HasColumnType("INTEGER")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1L)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ID");
 
